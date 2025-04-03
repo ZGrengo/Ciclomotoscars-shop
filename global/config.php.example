@@ -1,0 +1,8 @@
+<?php
+define("KEY", "");
+define("COD", "");
+define("SERVIDOR", "");
+define("USUARIO", "");
+define("PASSWORD", "");
+define("BD", "");
+?>
