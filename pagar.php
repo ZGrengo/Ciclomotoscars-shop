@@ -5,8 +5,8 @@ include 'carrito.php';
 include 'templates/cabecera.php';
 ?>
 
-<script src="https://www.paypal.com/sdk/js?client-id=Ac3yarg5W_DyUtvDzUVHVDoD8TpeAB_f3TOGU3JgyZsZTdYXYxEPOQgJx3X3hcYo_VYRo-esB0s2b22l">
-//live id: AYuNLqRXgjcw3LFp-Viv0oW0s2NrdWxnydyS-PCb6-5j8Jgd5xAvDxniHGWislkXbyD5r0TAaKLBG9Bx
+<script src="https://www.paypal.com/sdk/js?client-id=">
+
 </script>
 <?php
 if($_POST){
