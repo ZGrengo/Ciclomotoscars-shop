@@ -23,22 +23,22 @@ include 'templates/cabecera.php';
             //print_r($listaProductos);
         ?>
         <?php foreach($listaProductos as $producto){  ?>
-            <div class="col-3">
-                <div class="card">
-                    <img 
-                    title="<?php echo $producto['Nombre'];?>"
-                    class="card-img-top" 
-                    src="<?php echo $producto['Imagen'];?>" 
-                    alt="<?php echo $producto['Nombre'];?>"
-                    
-                    data-toggle="popover"
-                    data-trigger="hover"
-                    data-content="<?php echo $producto['Descripcion'];?>"
-                    height="317px"
-                    >
-                    <div class="card-body">
-                        <span><?php echo $producto['Nombre'];?></span>
-                        <h5 class="card-title"><?php echo $producto['Precio'];?>$</h5>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-img-container" style="height: 200px; overflow: hidden;">
+                        <img 
+                        title="<?php echo $producto['Nombre'];?>"
+                        class="card-img-top img-fluid h-100 w-100 object-fit-cover" 
+                        src="<?php echo $producto['Imagen'];?>" 
+                        alt="<?php echo $producto['Nombre'];?>"
+                        data-toggle="popover"
+                        data-trigger="hover"
+                        data-content="<?php echo $producto['Descripcion'];?>"
+                        >
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <span class="card-title"><?php echo $producto['Nombre'];?></span>
+                        <h5 class="card-text"><?php echo $producto['Precio'];?>$</h5>
 
                     <form action="" method="post">
 

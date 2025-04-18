@@ -5,8 +5,7 @@ include 'carrito.php';
 include 'templates/cabecera.php';
 ?>
 
-<script src="https://www.paypal.com/sdk/js?client-id=Ac3yarg5W_DyUtvDzUVHVDoD8TpeAB_f3TOGU3JgyZsZTdYXYxEPOQgJx3X3hcYo_VYRo-esB0s2b22l">
-//live id: AYuNLqRXgjcw3LFp-Viv0oW0s2NrdWxnydyS-PCb6-5j8Jgd5xAvDxniHGWislkXbyD5r0TAaKLBG9Bx
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo PAYPAL_KEY; ?>">
 </script>
 <?php
 if($_POST){
@@ -47,43 +46,38 @@ if($_POST){
 }
 ?>
 
-
-
-<div class="jumbotron text-center">
-    <h1 class="display-4">Paso final!</h1>
-    <hr class="my-4">
-    <p class="lead">Estas a punto de pagar con paypal la siguiente cantidad: 
-        <h4><?php echo number_format($total,2); ?> $</h4>
-    </p>
-    <div id="paypal-button-container"></div>
-    <p>El pedido podra ser retirado en los siguientes dias habiles <br/>
-    <strong>(Para dudas o consultas: ciclomotoscar@gmail.com)</strong>
-    </p>
-    
+<div class="container d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 200px);">
+    <div class="jumbotron text-center w-100" style="max-width: 600px;">
+        <h1 class="display-4">Paso final!</h1>
+        <hr class="my-4">
+        <p class="lead">Estas a punto de pagar con paypal la siguiente cantidad:</p>
+        <h4 class="mb-4"><?php echo number_format($total,2); ?> $</h4>
+        <div id="paypal-button-container" class="mb-4"></div>
+        <p class="mb-0">El pedido podra ser retirado en los siguientes dias habiles</p>
+        <p class="mb-0"><strong>(Para dudas o consultas: ciclomotoscar@gmail.com)</strong></p>
+    </div>
 </div>
 
 <script>
-      paypal.Buttons({
+    paypal.Buttons({
         createOrder: function(data, actions) {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: '<?php echo $total; ?>'
-              },
-              custom:"<?php echo $SID;?>#<?php echo openssl_encrypt($idVenta, COD, KEY); ?>"
-            }]
-          });
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '<?php echo $total; ?>'
+                    },
+                    custom:"<?php echo $SID;?>#<?php echo openssl_encrypt($idVenta, COD, KEY); ?>"
+                }]
+            });
         },
         onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-              console.log(details);
-              
-          });
+            return actions.order.capture().then(function(details) {
+                console.log(details);
+            });
         }
-      }).render('#paypal-button-container'); // Display payment options on your web page
-    </script>
-
-
+    }).render('#paypal-button-container');
+</script>
+</main>
 <?php
 include 'templates/pie.php';
 ?>
