@@ -11,25 +11,29 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!-- Hero Carousel -->
-<div class="bg-dark py-4">
+<div class="bg-black py-4 mb-5">
     <div class="container">
         <div id="productCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <?php foreach($listaProductos as $index => $producto){ ?>
-                    <li data-target="#productCarousel" data-slide-to="<?php echo $index; ?>" <?php echo $index === 0 ? 'class="active"' : ''; ?>></li>
-                <?php } ?>
-            </ol>
             <div class="carousel-inner">
-                <?php foreach($listaProductos as $index => $producto){ ?>
+                <?php 
+                $chunks = array_chunk($listaProductos, 3);
+                foreach($chunks as $index => $chunk) { ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                        <div class="carousel-image-container" style="height: 300px; overflow: hidden;">
-                            <a href="index.php" class="d-block w-100 h-100">
-                                <img class="d-block mx-auto h-100 object-fit-contain" src="<?php echo htmlspecialchars($producto['Imagen']); ?>" alt="<?php echo htmlspecialchars($producto['Nombre']); ?>">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block text-white">
-                                <h3 class="text-warning"><?php echo htmlspecialchars($producto['Nombre']); ?></h3>
-                                <p class="text-light"><?php echo htmlspecialchars($producto['Descripcion']); ?></p>
-                            </div>
+                        <div class="row">
+                            <?php foreach($chunk as $producto) { ?>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-warning h-100" onclick="window.location.href='index.php'" style="cursor: pointer;">
+                                        <div class="card-body p-0">
+                                            <div class="carousel-image-container" style="height: 250px; overflow: hidden;">
+                                                <img class="d-block mx-auto h-100 object-fit-contain" src="<?php echo htmlspecialchars($producto['Imagen']); ?>" alt="<?php echo htmlspecialchars($producto['Nombre']); ?>" style="max-width: 80%;">
+                                            </div>
+                                            <div class="card-footer bg-dark border-warning text-center">
+                                                <h5 class="text-warning mb-0"><?php echo htmlspecialchars($producto['Nombre']); ?></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php } ?>
@@ -47,13 +51,13 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <!-- About Us Section -->
-<section class="py-5">
+<section class="py-5" style="background-color: #111111;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
+            <div class="col-lg-8 mx-auto text-center text-white">
                 <h2 class="display-4 mb-4">Sobre Nosotros</h2>
-                <p class="lead">Bienvenidos a nuestra tienda de ciclomotores</p>
-                <div class="text-left">
+                <p class="lead text-warning">Bienvenidos a nuestra tienda de ciclomotores</p>
+                <div class="text-left text-light">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
@@ -64,25 +68,25 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 <!-- Contact Section -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-black">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
+            <div class="col-lg-8 mx-auto text-center text-white">
                 <h2 class="display-4 mb-4">Contáctanos</h2>
                 <div class="row">
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <i class="fas fa-map-marker-alt fa-2x mb-3"></i>
+                        <div class="card h-100 bg-dark border-warning">
+                            <div class="card-body text-white">
+                                <i class="fas fa-map-marker-alt fa-2x mb-3 text-warning"></i>
                                 <h5 class="card-title">Ubicación</h5>
                                 <p class="card-text">Av. Principal #123<br>Ciudad, Estado<br>Código Postal</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <i class="fas fa-clock fa-2x mb-3"></i>
+                        <div class="card h-100 bg-dark border-warning">
+                            <div class="card-body text-white">
+                                <i class="fas fa-clock fa-2x mb-3 text-warning"></i>
                                 <h5 class="card-title">Horarios</h5>
                                 <p class="card-text">
                                     Lunes a Viernes: 9:00 - 18:00<br>
@@ -93,9 +97,9 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <i class="fas fa-phone fa-2x mb-3"></i>
+                        <div class="card h-100 bg-dark border-warning">
+                            <div class="card-body text-white">
+                                <i class="fas fa-phone fa-2x mb-3 text-warning"></i>
                                 <h5 class="card-title">Contacto</h5>
                                 <p class="card-text">
                                     Tel: (123) 456-7890<br>
@@ -115,16 +119,32 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
-        background-color: #f8f9fa;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .navbar {
+        border-bottom: 2px solid #FFC800;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: #fff;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #000;
+        background-color: #fff;
+        border-radius: 4px;
     }
 
     .carousel-image-container {
         position: relative;
-        background-color: #212529;
+        background-color: #000;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 400px;
     }
 
     .carousel-image-container img {
@@ -139,30 +159,20 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         border-radius: 10px;
     }
 
-    .carousel-caption h3,
-    .carousel-caption p {
-        color: #fff;
-    }
-
     .card {
-        transition: transform 0.3s, box-shadow 0.3s;
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid #FFC800;
+        margin-bottom: 20px;
     }
 
     .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-body i {
-        color: #e6e84e;
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3);
     }
 
     .display-4 {
         font-weight: bold;
-        color: #343a40;
+        color: #fff;
     }
 
     section {
@@ -171,22 +181,33 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 
     .bg-dark .carousel-indicators li {
-        background-color: #e6e84e;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        width: 2rem;
-        height: 2rem;
+        background-color: #FFC800;
     }
 
     .carousel-control-prev,
     .carousel-control-next {
         width: 5%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text-warning {
+        color: #FFC800 !important;
+    }
+
+    footer {
+        border-top: 2px solid #FFC800;
+    }
+
+    .card-footer {
+        padding: 1rem;
     }
 </style>
 
-</main>
 <?php
 include 'templates/pie.php';
 ?> 

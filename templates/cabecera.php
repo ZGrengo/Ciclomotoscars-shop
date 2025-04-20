@@ -21,24 +21,45 @@
         main {
             flex: 1 0 auto;
         }
+        .navbar {
+            padding: 0.5rem 2rem;
+        }
+        .navbar-brand {
+            margin-right: 2rem;
+        }
+        .navbar-nav {
+            margin-left: auto;
+        }
+        .nav-item {
+            margin: 0 0.5rem;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #000;
+            background-color: #fff;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justify-content-between" id="barra">
-        <a class="navbar-brand" href="index.php"><img src="archivos/img/logo.png"></a>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top justify-content-between" id="barra" style="background-color: #111111;">
+        <a class="navbar-brand" href="landing.php"><img src="archivos/img/logo.png"></a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="landing.php">Inicio</a>
+                    <a class="nav-link" href="index.php">Productos</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="mostrarCarrito.php">Carrito<?php echo (!empty($_SESSION['CARRITO'])) ? '(' . count($_SESSION['CARRITO']) . ')' : ''; ?></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="Contacto.php">Contacto</a>
+                    <a class="nav-link" href="contacto.php">Contacto</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="administrar.php">Administracion</a>

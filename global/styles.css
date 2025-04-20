@@ -1,11 +1,10 @@
-#busqueda{
-    border-color: #EDEB00 !important;
-
+#busqueda {
+    border-color: #edeb00 !important;
 }
-.border-top{
-    border-top: 1px solid #EDEB00;
+.border-top {
+    border-top: 1px solid #edeb00;
 }
 
-#footer p{
-	margin: 0;
+#footer p {
+    margin: 0;
 }
