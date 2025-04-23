@@ -15,7 +15,13 @@ include 'templates/cabecera.php';
     <?php }?>
 
     <div class="container">
-        <h2 class="text-center mb-4">Administración de Productos</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Administración de Productos</h2>
+            <button id="editarTodos" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Editar Todos
+            </button>
+        </div>
+
         <div class="row">
             <?php
                 $sentencia=$pdo->prepare("SELECT * FROM `tblproductos`");
@@ -37,33 +43,35 @@ include 'templates/cabecera.php';
                             >
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <form action="editar.php" method="post" class="w-100">
-                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($producto['ID']);?>">
+                            <form action="editar.php" method="post" class="w-100 producto-form">
+                                <input type="hidden" name="ID" value="<?php echo htmlspecialchars($producto['ID']);?>">
                                 
                                 <div class="form-group">
                                     <label for="nombre_<?php echo $producto['ID'];?>">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre_<?php echo $producto['ID'];?>" 
-                                        value="<?php echo htmlspecialchars($producto['Nombre']);?>" required>
+                                    <input type="text" class="form-control" name="Nombre" id="nombre_<?php echo $producto['ID'];?>" 
+                                        value="<?php echo htmlspecialchars($producto['Nombre']);?>" required readonly>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="precio_<?php echo $producto['ID'];?>">Precio</label>
-                                    <input type="number" class="form-control" name="precio" id="precio_<?php echo $producto['ID'];?>" 
-                                        value="<?php echo htmlspecialchars($producto['Precio']);?>" step="0.01" required>
+                                    <input type="number" class="form-control" name="Precio" id="precio_<?php echo $producto['ID'];?>" 
+                                        value="<?php echo htmlspecialchars($producto['Precio']);?>" step="0.01" required readonly>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="cantidad_<?php echo $producto['ID'];?>">Cantidad</label>
-                                    <input type="number" class="form-control" name="cantidad" id="cantidad_<?php echo $producto['ID'];?>" 
-                                        value="<?php echo htmlspecialchars($producto['Cantidad'] ?? 0);?>" required>
+                                    <input type="number" class="form-control" name="Cantidad" id="cantidad_<?php echo $producto['ID'];?>" 
+                                        value="<?php echo htmlspecialchars($producto['Cantidad'] ?? 0);?>" required readonly>
                                 </div>
 
-                                <button class="btn btn-primary w-100 mt-2" 
-                                    name="btnAction" 
-                                    value="Editar" 
-                                    type="submit">
-                                    <i class="fas fa-edit"></i> Editar
-                                </button>
+                                <div class="btn-group w-100">
+                                    <button class="btn btn-warning editar-producto" type="button">
+                                        <i class="fas fa-unlock"></i> Editar
+                                    </button>
+                                    <button class="btn btn-success actualizar-producto" type="submit" style="display: none;">
+                                        <i class="fas fa-save"></i> Actualizar
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -76,8 +84,49 @@ include 'templates/cabecera.php';
         $(function () {
             $('[data-toggle="popover"]').popover();
             
+            // Handle individual product edit button
+            $('.editar-producto').on('click', function(e) {
+                const form = $(this).closest('form');
+                toggleFormEdit(form, true);
+            });
+
+            // Handle edit all button
+            $('#editarTodos').on('click', function() {
+                const isEditing = $(this).hasClass('editing');
+                $('.producto-form').each(function() {
+                    toggleFormEdit($(this), !isEditing);
+                });
+                
+                // Toggle button text and class
+                if (!isEditing) {
+                    $(this).html('<i class="fas fa-lock"></i> Cancelar Edición');
+                    $(this).removeClass('btn-warning').addClass('btn-danger editing');
+                } else {
+                    $(this).html('<i class="fas fa-edit"></i> Editar Todos');
+                    $(this).removeClass('btn-danger editing').addClass('btn-warning');
+                }
+            });
+
+            // Function to toggle form edit state
+            function toggleFormEdit(form, editable) {
+                const inputs = form.find('input[type="text"], input[type="number"]');
+                const editBtn = form.find('.editar-producto');
+                const updateBtn = form.find('.actualizar-producto');
+
+                inputs.prop('readonly', !editable);
+                
+                if (editable) {
+                    editBtn.hide();
+                    updateBtn.show();
+                    inputs.first().focus();
+                } else {
+                    editBtn.show();
+                    updateBtn.hide();
+                }
+            }
+
             // Form validation
-            $('form').on('submit', function(e) {
+            $('.producto-form').on('submit', function(e) {
                 let isValid = true;
                 $(this).find('input[required]').each(function() {
                     if (!$(this).val()) {
