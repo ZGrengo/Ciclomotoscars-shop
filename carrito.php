@@ -20,7 +20,8 @@ if(isset($_POST['btnAction'])){
                         'ID' => $id,
                         'NOMBRE' => openssl_decrypt($_POST['nombre'], COD, KEY),
                         'PRECIO' => openssl_decrypt($_POST['precio'], COD, KEY),
-                        'CANTIDAD' => openssl_decrypt($_POST['cantidad'], COD, KEY)
+                        'CANTIDAD' => openssl_decrypt($_POST['cantidad'], COD, KEY),
+                        'IMAGEN' => openssl_decrypt($_POST['imagen'], COD, KEY)
                     );
                     $_SESSION['CARRITO'][$id] = $producto;
                     $mensaje = "Producto agregado al carrito";
