@@ -13,7 +13,7 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 <!-- Hero Carousel -->
 <div class="bg-black py-4 mb-5">
     <div class="container">
-        <div id="productCarousel" class="carousel slide" data-ride="carousel">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <?php 
                 $chunks = array_chunk($listaProductos, 3);
@@ -38,14 +38,14 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 <?php } ?>
             </div>
-            <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </div>
@@ -58,10 +58,34 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                 <h2 class="display-4 mb-4">Sobre Nosotros</h2>
                 <p class="lead text-warning">Bienvenidos a nuestra tienda de ciclomotores</p>
                 <div class="text-left text-light">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p class="mb-4">En Ciclomotores Plus, nos apasiona brindarte la mejor experiencia sobre ruedas. Con más de 10 años de trayectoria, nos hemos consolidado como una tienda líder en la venta de ciclomotores, motocicletas y bicicletas de alta calidad.</p>
+                    
+                    <p class="mb-4">Nuestro compromiso es ofrecer productos confiables, innovadores y accesibles, acompañados siempre de un servicio cercano y personalizado. Cada uno de nuestros clientes forma parte de esta gran comunidad que comparte el amor por la velocidad, la aventura y la libertad.</p>
+                    
+                    <p class="mb-4">Trabajamos día a día para seleccionar las mejores marcas y los modelos más destacados del mercado, adaptándonos a tus necesidades y a las nuevas tendencias.</p>
+                    
+                    <p class="mb-0">¡Te invitamos a ser parte de nuestra familia de más de 500 clientes felices! Tu próxima aventura comienza aquí.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5" style="background-color: #111111;">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <h2 class="display-4 text-warning" id="clientes">0+</h2>
+                <p class="lead text-white">Clientes felices</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h2 class="display-4 text-warning" id="experiencia">0</h2>
+                <p class="lead text-white">Años de experiencia</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h2 class="display-4 text-warning" id="productos">0+</h2>
+                <p class="lead text-white">Productos disponibles</p>
             </div>
         </div>
     </div>
@@ -114,6 +138,29 @@ $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerText = Math.floor(progress * (end - start) + start) + (id !== 'experiencia' ? '+' : '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        animateValue("clientes", 0, 500, 2000);
+        animateValue("experiencia", 0, 10, 2000);
+        animateValue("productos", 0, 100, 2000);
+    });
+</script>
 
 <style>
     body {
