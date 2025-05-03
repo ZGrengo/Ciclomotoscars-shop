@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Zona Administrativa"
+AuthUserFile C:/xampp/htdocs/tienda/admin/.htpasswd
+Require valid-user

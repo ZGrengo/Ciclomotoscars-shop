@@ -1,8 +1,8 @@
 <?php
-include 'global/config.php';
-include 'global/conexion.php';
-include 'carrito.php';
-include 'templates/cabecera.php';
+include '../global/config.php';
+include '../global/conexion.php';
+include '../carrito.php';
+include '../templates/cabecera.php';
 ?>
 <br/>
 <?php
@@ -40,5 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <a href="administrar.php" class="btn btn-primary">Volver a Administración</a>
 <?php
-include 'templates/pie.php';
+include '../templates/pie.php';
 ?>

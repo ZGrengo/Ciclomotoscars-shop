@@ -1,8 +1,8 @@
 <?php
-include 'global/config.php';
-include 'global/conexion.php';
-include 'carrito.php';
-include 'templates/cabecera.php';
+include '../global/config.php';
+include '../global/conexion.php';
+include '../carrito.php';
+include '../templates/cabecera.php';
 
 // Check for success message from nuevoProducto.php
 if (isset($_GET['mensaje'])) {
@@ -212,4 +212,4 @@ if (isset($_GET['mensaje'])) {
     });
 </script>
 
-<?php include 'templates/pie.php'; ?>
+<?php include '../templates/pie.php'; ?>
