@@ -5,12 +5,12 @@
 Sistema de tienda online desarrollado en PHP para la venta de productos de ciclomotores, motocicletas y bicicletas. Incluye carrito de compras, integración con PayPal, panel de administración y sistema de notificaciones por correo electrónico.
 
 -   [Características](#-características)
+-   [Imagenes de muestra](#-imágenes-de-muestra)
 -   [Stack Tecnológico](#%EF%B8%8F-stack-tecnológico)
 -   [Requisitos Previos](#-requisitos-previos)
 -   [Inicio Rápido](#-inicio-rápido)
 -   [Dominios de Imágenes Soportados](#%EF%B8%8F-dominios-de-imágenes-soportados)
 -   [Estructura del Proyecto](#-estructura-del-proyecto)
--   [Deployment](#-deployment)
 -   [Uso](#-uso)
 -   [Seguridad](#-seguridad)
 -   [Scripts Disponibles](#-scripts-disponibles)
@@ -27,6 +27,49 @@ Sistema de tienda online desarrollado en PHP para la venta de productos de ciclo
 -   ✅ **Sistema de notificaciones** por correo electrónico (PHPMailer)
 -   ✅ **Autenticación HTTP Basic** para el área de administración
 -   ✅ **Interfaz moderna** con Bootstrap 5 y diseño oscuro
+
+## 📸 Imágenes de Muestra
+
+### Vista Desktop
+
+<table>
+  <tr>
+    <td align="center">
+      <img width="460" alt="TiendaDesktop2" src="https://github.com/user-attachments/assets/f042931f-7813-4f3d-b28e-29cf34460946" />
+      <br />
+      <strong>Página Principal</strong>
+    </td>
+    <td align="center">
+      <img width="460" alt="PagarDesktop2" src="https://github.com/user-attachments/assets/3bad302f-11e1-413f-9961-74533ad45dc7" />
+      <br />
+      <strong>Proceso de Pago</strong>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img width="460" alt="AdminPageDesktop2" src="https://github.com/user-attachments/assets/94337e87-e748-43b0-8e1f-2b03cdda1654" />
+      <br />
+      <strong>Panel de Administración</strong>
+    </td>
+  </tr>
+</table>
+
+### Vista Mobile
+
+<table>
+  <tr>
+    <td align="center">
+      <img width="431" height="934" alt="CarritoMovil1" src="https://github.com/user-attachments/assets/1577c990-e085-4ad0-b720-77dea53a0582" />
+      <br />
+      <strong>Carrito de Compras</strong>
+    </td>
+    <td align="center">
+      <img width="432" height="764" alt="PagoFinalMovil" src="https://github.com/user-attachments/assets/4c0bf81f-5b44-4261-84ea-0465492c8458" />
+      <br />
+      <strong>Pago Final</strong>
+    </td>
+  </tr>
+</table>
 
 ## 🛠️ Stack Tecnológico
 
