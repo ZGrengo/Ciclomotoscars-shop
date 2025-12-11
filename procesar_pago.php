@@ -76,8 +76,8 @@ try {
             if (isset($_SESSION['CARRITO']) && !empty($_SESSION['CARRITO'])) {
                 foreach ($_SESSION['CARRITO'] as $indice => $producto) {
                     $sentencia = $pdo->prepare("INSERT INTO `tbldetalleventa` 
-                        (`IDVenta`, `IDProducto`, `PrecioUnitario`, `Cantidad`, `Descargado`) 
-                        VALUES (:IDVenta, :IDProducto, :PrecioUnitario, :Cantidad, '0')");
+                        (`IDVenta`, `IDProducto`, `PrecioUnitario`, `Cantidad`) 
+                        VALUES (:IDVenta, :IDProducto, :PrecioUnitario, :Cantidad)");
 
                     if (!$sentencia) {
                         throw new Exception('Failed to prepare SQL statement for tbldetalleventa');

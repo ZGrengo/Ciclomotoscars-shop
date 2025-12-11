@@ -96,6 +96,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_COLUMN);
                                             <input type="hidden" name="id" value="<?php echo openssl_encrypt($producto['ID'], COD, KEY); ?>">
                                             <input type="hidden" name="nombre" value="<?php echo openssl_encrypt($producto['Nombre'], COD, KEY); ?>">
                                             <input type="hidden" name="precio" value="<?php echo openssl_encrypt($producto['Precio'], COD, KEY); ?>">
+                                            <input type="hidden" name="imagen" value="<?php echo openssl_encrypt($producto['Imagen'], COD, KEY); ?>">
                                             <button type="submit" name="btnAction" value="Menos" class="btn btn-sm btn-warning mx-1">
                                                 <i class="fas fa-minus"></i>
                                             </button>
@@ -112,6 +113,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_COLUMN);
                                     <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($producto['ID'], COD, KEY); ?>">
                                     <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($producto['Nombre'], COD, KEY); ?>">
                                     <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($producto['Precio'], COD, KEY); ?>">
+                                    <input type="hidden" name="imagen" id="imagen" value="<?php echo openssl_encrypt($producto['Imagen'], COD, KEY); ?>">
                                     <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
                                     <button class="btn btn-warning w-100" name="btnAction" value="Agregar" type="submit">Agregar al Carrito</button>
                                 </form>

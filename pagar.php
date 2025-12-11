@@ -29,8 +29,8 @@ if($_POST && !empty($_SESSION['CARRITO'])) {
     // Informacion de venta enviada a la base de datos
     foreach($_SESSION['CARRITO'] as $indice=>$producto) {
         $sentencia = $pdo->prepare("INSERT INTO 
-        `tbldetalleventa` (`ID`, `IDVENTA`, `IDPRODUCTO`, `PRECIOUNITARIO`, `CANTIDAD`, `DESCARGADO`) 
-        VALUES (NULL, :IDVENTA, :IDPRODUCTO, :PRECIOUNITARIO, :CANTIDAD, '0');");
+        `tbldetalleventa` (`ID`, `IDVENTA`, `IDPRODUCTO`, `PRECIOUNITARIO`, `CANTIDAD`) 
+        VALUES (NULL, :IDVENTA, :IDPRODUCTO, :PRECIOUNITARIO, :CANTIDAD);");
 
         $sentencia->bindParam(":IDVENTA", $idVenta);
         $sentencia->bindParam(":IDPRODUCTO", $producto['ID']);
